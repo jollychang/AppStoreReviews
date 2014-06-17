@@ -152,9 +152,11 @@ def _print_reviews(reviews, country):
         for review in reviews:
             for i in range(review["rank"]):
                 sys.stdout.write ("*") # to avoid space or newline after print
-            print " (%s) %s" % (review["topic"], review["review"])
+            s = " (%s) %s" % (review["topic"], review["review"])
+            print s.encode('utf-8') 
             sumRank += review["rank"]
-        print "Number of reviews in %s: %d, avg rank: %.2f\n" % (country, len(reviews), 1.0*sumRank/len(reviews))
+        s =  "Number of reviews in %s: %d, avg rank: %.2f\n" % (country, len(reviews), 1.0*sumRank/len(reviews))
+        print s.encode('utf-8')
         return (len(reviews), sumRank)
     else:
         return (0, 0)
